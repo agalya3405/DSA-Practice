@@ -1,0 +1,29 @@
+class Solution {
+    public int compress(char[] chars) {
+        int n = chars.length;
+        StringBuilder ans = new StringBuilder();
+        int count = 1;
+        for(int i=0;i<n;i++){
+            if(i<n-1 && chars[i]==chars[i+1]){
+                count++;
+            }
+            else{
+                if(count==1){
+                    ans.append(chars[i]);
+                }
+                else{
+                    ans.append(chars[i]);
+                    ans.append(count);
+                }
+                count=1;
+            }
+        }
+       
+        String st = ans.toString();
+         
+         for(int i=0;i<st.length();i++)
+           chars[i] = st.charAt(i);
+       
+        return st.length();
+    }
+}
