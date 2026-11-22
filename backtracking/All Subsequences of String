@@ -1,0 +1,21 @@
+class Solution {
+    public void backtrack(String s,int idx,String temp,List<String> ans){
+        if(idx==s.length()){
+            ans.add(temp);
+            temp = "";
+            return;
+        }
+        
+        backtrack(s,idx+1,temp + s.charAt(idx),ans);
+        backtrack(s,idx+1,temp,ans);
+        
+    }
+    public List<String> powerSet(String s) {
+       List<String> ans = new ArrayList<>();
+      
+        int n = s.length();
+        backtrack(s,0,"",ans);
+        Collections.sort(ans);
+        return ans;
+    }
+}

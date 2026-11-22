@@ -1,0 +1,27 @@
+class Solution {
+    public void backtrack(int[] nums,int idx , Set<List<Integer>>ans , List<Integer>temp){
+        if(idx == nums.length){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+
+        temp.add(nums[idx]);
+        backtrack(nums,idx+1,ans,temp);
+
+        temp.remove(temp.size()-1);
+        backtrack(nums,idx+1,ans,temp);
+    }
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Set<List<Integer>> ans = new HashSet<>();
+        List<Integer> temp = new ArrayList<>();
+
+        Arrays.sort(nums);
+
+    backtrack(nums,0,ans,temp);
+    
+
+    List<List<Integer>> finalAns = new ArrayList<>(ans);
+    return finalAns;
+
+    }
+}
